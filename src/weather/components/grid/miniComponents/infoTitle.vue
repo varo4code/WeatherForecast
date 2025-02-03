@@ -6,14 +6,13 @@
 </template>
 
 <script setup lang="ts">
-
-defineProps<{
+interface Props {
   image: string,
   title: string
-}>();
+};
+defineProps<Props>();
 
-
-// Resuelve la imagen correctamente
+// Get the image path
 const getImagePath = (image:string) => {
   return new URL('../../../../assets/icons/'+image, import.meta.url).href;
 };

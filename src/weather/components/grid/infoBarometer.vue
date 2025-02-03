@@ -1,6 +1,6 @@
 <template>
   <div class="relative p-4">
-    <!-- Capa de superposición -->
+    <!-- Superposition cover -->
     <div class="absolute inset-0 bg-gray-500 opacity-30 rounded-4xl"></div>
 
     <div class="relative">

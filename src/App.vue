@@ -1,19 +1,25 @@
 
 <template>
   <main>
-    <div class="w-screen h-screen grid grid-cols-4 gap-4 p-8 bg-[url(./assets/backgrounds/thunderstorm.svg)] bg-cover">
+    <div class="h-screen w-screen grid grid-rows-3 gap-4 p-8 bg-[url(./assets/backgrounds/thunderstorm.svg)] bg-cover">
+      <!-- Cover -->
       <div class="absolute inset-0 bg-teal-900 opacity-50"></div>
-      <div class="col-span-3 grid grid-rows-3 relative z-10">
-        <mainInfo />
 
-        <div class="grid grid-cols-3 gap-4 row-span-2 mt-5">
+      <mainInfo />
+      <div class="row-span-2 grid grid-cols-4 grid-rows-2 gap-4 mt-5">
           <infoTemperature />
           <infoBarometer />
           <infoMoonPhase />
-          <infoForecast24 />
-        </div>
+          <div class="row-span-2">
+            <!-- Sidebar -->
+            <infoConditions />
+          </div>
+          <div class="col-span-3">
+            <!-- Bottom component -->
+            <infoForecast24 />
+          </div>
       </div>
-      <div class="border relative z-10">Air conditions Sidebar</div>
+
     </div>
   </main>
 </template>
@@ -28,4 +34,5 @@ import infoTemperature from './weather/components/grid/infoTemperature.vue';
 import infoBarometer from './weather/components/grid/infoBarometer.vue';
 import infoMoonPhase from './weather/components/grid/infoMoonPhase.vue';
 import infoForecast24 from './weather/components/grid/infoForecast24.vue';
+import infoConditions from './weather/components/sidebar/infoConditions.vue';
 </script>
