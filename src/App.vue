@@ -3,7 +3,8 @@
   <main>
     <div class="h-screen w-screen grid grid-rows-3 gap-4 p-8 bg-[url(./assets/backgrounds/thunderstorm.svg)] bg-cover">
       <!-- Cover -->
-      <div class="absolute inset-0 bg-teal-900 opacity-50"></div>
+      <div class="absolute inset-0 bg-linear-to-t bg-[#0a5b87] opacity-50"></div>
+      <div class="absolute inset-0 bg-linear-to-t from-[#072230] to-transparent to-70% opacity-70"></div>
 
       <mainInfo />
       <div class="row-span-2 grid grid-cols-4 grid-rows-2 gap-4 mt-5">

@@ -1,7 +1,7 @@
 <template>
   <div class="relative p-4">
     <!-- Superposition cover -->
-    <div class="absolute inset-0 bg-gray-500 opacity-30 rounded-4xl"></div>
+    <div class="absolute inset-0 bg-[#0b6392] opacity-60 rounded-4xl"></div>
 
     <div class="relative">
       <infoTitle image="moon.svg" title="Moon Phase" />
