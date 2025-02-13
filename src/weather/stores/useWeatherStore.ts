@@ -34,22 +34,19 @@ export const useWeatherStore = defineStore('weather', () => {
     }
   }
 
-  const getWeather = async() => {
-
+  const getWeather = async (lat: number, lon: number) => {
     try {
-      const res = apiWeather.get<Weather>('/weather', {
+      const res = await apiWeather.get<Weather>('/weather', {
         params: {
-          lat: city.value?.lat,
-          lon: city.value?.lon
-        }
+          lat,
+          lon,
+        },
       })
 
-      return res
-
+      return res.data
     } catch (error) {
       throw new Error('Error getting the weather: ' + error)
     }
-
   }
 
   const getCityWeather = async (search: string) => {
@@ -66,10 +63,10 @@ export const useWeatherStore = defineStore('weather', () => {
       return
     }
 
-    getWeather()
-    
+    weather.value = await getWeather(resCity[0].lat, resCity[0].lon)
+
     isLoading.value = false
-    return city.value = resCity[0]
+    return (city.value = resCity[0])
   }
 
   return {
