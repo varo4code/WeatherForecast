@@ -13,6 +13,7 @@ export const useWeatherStore = defineStore('weather', () => {
 
   const showError = () => {
     isError.value = true
+    isLoading.value = false
     setTimeout(() => {
       isError.value = false
     }, 500);

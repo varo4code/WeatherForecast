@@ -14,6 +14,6 @@ defineProps<Props>();
 
 // Get the image path
 const getImagePath = (image:string) => {
-  return new URL('../../../../assets/icons/'+image, import.meta.url).href;
+  return new URL('/icons/'+image, import.meta.url).href;
 };
 </script>

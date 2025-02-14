@@ -12,7 +12,7 @@
         </div>
         
         <div class="flex items-center mt-4">
-            <img src="../../../assets/icons/humid.svg" alt="Humid" class="h-6" />
+            <img src="/icons/humid.svg" alt="Humid" class="h-6" />
             <div class="flex flex-col ml-3">
               <span class="text-sm">Humid</span>
               <span class="text-3xl">66%</span>

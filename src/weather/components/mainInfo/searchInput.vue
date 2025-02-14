@@ -1,12 +1,12 @@
 <template>
   <div @click="openSearch" class="flex items-center w-fit h-6 hover:cursor-pointer">
-    <img src="../../../assets/icons/location.svg" alt="Location" class="h-6" />
+    <img src="/icons/location.svg" alt="Location" class="h-6" />
     <div
       v-if="!showInput"
       class="flex items-center ml-2 transition-all duration-1000 ease-in-out hover:scale-105"
     >
       <span v-if="city?.name != ''" class="text-lg">{{ city?.name }}, {{ city?.country }}</span>
-      <img src="../../../assets/icons/arrow.svg" class="h-4 ml-3" />
+      <img src="/icons/arrow.svg" class="h-4 ml-3" />
     </div>
     <transition name="fade">
       <input
