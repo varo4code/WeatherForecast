@@ -2,13 +2,13 @@
   <div class="px-5 relative flex justify-between items-center">
     <div class="w-fit">
       <SearchInput />
-      <div v-if="weather" class="text-3xl mt-3.5">{{ weather.weather[0].main }}</div>
+      <div v-if="weather" class="text-3xl mt-3.5">{{ weather.weather[0].main }} <span v-if="weather.rain">| {{ weather.rain['1h'] }} mm/h</span></div>
       <div v-if="weather" class="text-[90px] mt-[-15px]">{{ Math.round(weather.main.temp) }}ºC</div>
-      <div v-if="weather" class="text-[15px] mt-[-22px]">{{ formatTimestamp(weather.dt, weather.timezone) }}</div>
+      <div v-if="weather" class="text-[15px] mt-[-22px]">
+        {{ formatTimestamp(weather.dt, weather.timezone) }}
+      </div>
     </div>
-      <div>
-        <img v-if="weather" :src="getIco(weather.weather[0].main)" alt="Location" class="h-56" />
-    </div>
+    <img v-if="weather" :src="getIco(weather.weather[0].main)" alt="Location" class="h-56 mr-5" />
   </div>
 </template>
 
@@ -25,16 +25,16 @@ dayjs.extend(utc)
 const weatherStore = useWeatherStore()
 const { weather } = storeToRefs(weatherStore)
 
-const formatTimestamp = (timestamp: number, timezoneOffset:number) => {  
-  return dayjs.unix(timestamp)
-  .utcOffset(timezoneOffset / 60)
-  .format('dddd | DD MMM YYYY - hh:mm A')
+const formatTimestamp = (timestamp: number, timezoneOffset: number) => {
+  return dayjs
+    .unix(timestamp)
+    .utcOffset(timezoneOffset / 60)
+    .format('dddd | DD MMM YYYY - hh:mm A')
 }
 
-const getIco = (icoName:string) =>{
+const getIco = (icoName: string) => {
   return '/icons/' + getIcons(icoName)
 }
-
 </script>
 
 <style scoped>

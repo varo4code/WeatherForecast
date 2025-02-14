@@ -3,7 +3,7 @@
     <div
       class="h-screen w-screen p-8 flex justify-around bg-gradient-to-tr from-[#3a91e2] to-[#3dcbe0]"
     >
-      <div class="container max-w-8xl">
+      <div class="container grid grid-rows-3 max-w-8xl">
         <!-- Cover -->
         <div class="absolute inset-0 bg-linear-to-t bg-[#0a5b87] opacity-50"></div>
         <div
@@ -64,7 +64,7 @@
 import mainInfo from './weather/components/mainInfo.vue'
 import infoTemperature from './weather/components/grid/infoTemperature.vue'
 import infoBarometer from './weather/components/grid/infoBarometer.vue'
-import infoMoonPhase from './weather/components/grid/infoMoonPhase.vue'
+import infoMoonPhase from './weather/components/grid/infoRange.vue'
 import infoForecast24 from './weather/components/grid/infoForecast24.vue'
 import infoConditions from './weather/components/sidebar/infoConditions.vue'
 import { useWeatherStore } from './weather/stores/useWeatherStore'
