@@ -1,7 +1,7 @@
 <template>
   <main>
     <div
-      class="h-[800px] p-8 flex justify-around bg-gradient-to-tr from-[#3a56e2] to-[#3d97e0]"
+      class="min-h-[800px] h-screen p-8 flex justify-around bg-gradient-to-tr from-[#3a56e2] to-[#3d97e0]"
     >
       <div class="container grid grid-rows-3 max-w-8xl">
         <!-- Cover -->

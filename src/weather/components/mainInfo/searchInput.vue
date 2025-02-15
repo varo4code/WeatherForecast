@@ -15,7 +15,7 @@
         ref="searchRef"
         type="text"
         placeholder="Search City..."
-        class="absolute top-0 left-14 h-9 w-sm p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
+        class="ml-3.5 h-9 w-sm p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
         :class="{ 'ring-red-500': isError, 'animate-bounce': isError }"
         @blur="hideInput"
         @keypress.enter="searchWeather"
