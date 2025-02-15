@@ -4,30 +4,25 @@
     <div class="absolute inset-0 bg-[#0b6392] opacity-60 rounded-4xl"></div>
 
     <div class="relative">
-      <!-- <infoTitle image="clock.svg" title="21-hour forecast" /> -->
+      <infoTitle image="clock.svg" title="48-hour forecast" />
 
-      <vue-apex-charts :options="chartOptions" :series="series" :height="170"></vue-apex-charts>
+      <vue-apex-charts
+        v-if="weatherStore.forecast"
+        :options="chartOptions"
+        :series="series"
+        :height="170"
+      ></vue-apex-charts>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// import infoTitle from './miniComponents/infoTitle.vue'
-import { ref } from 'vue'
+import infoTitle from './miniComponents/infoTitle.vue'
+import { useWeatherStore } from '@/weather/stores/useWeatherStore'
+import { ref, watch } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
-const series = ref([
-  {
-    name: '',
-    data: [
-      { x: '2024-02-10', y: 28, min: 18 },
-      { x: '2024-02-11', y: 26, min: 17 },
-      { x: '2024-02-12', y: 27, min: 16 },
-      { x: '2024-02-13', y: 24, min: 14 },
-      { x: '2024-02-14', y: 22, min: 12 },
-      { x: '2024-02-15', y: 23, min: 13 },
-    ],
-  },
-])
+const series = ref([{}])
+const weatherStore = useWeatherStore()
 
 const chartOptions = ref({
   chart: {
@@ -49,26 +44,34 @@ const chartOptions = ref({
     axisTicks: { show: false },
     type: 'datetime',
     labels: {
-      format: 'dd MMM',
-      style: { 
-        colors: '#FFFFFF',
-        fontSize: '12px'
+      formatter: (value: string | number | Date) => {
+        const date = new Date(value);
+        return date.toLocaleDateString('en-US', {
+          day: '2-digit',
+          month: 'short',
+        }) + ' - ' + date.toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false, // Cambia a true si quieres AM/PM
+        });
       },
-    },
-    
+      style: {
+        colors: '#FFFFFF',
+        fontSize: '12px',
+      },
+    }
   },
   yaxis: {
     show: false,
   },
   tooltip: {
-    theme: "dark",
+    theme: 'dark',
     x: { format: 'dddd, dd MMM' },
     y: {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      formatter: function (value: any, { dataPointIndex, seriesIndex, w }: any) {
-        const minTemp = w.globals.series[seriesIndex][dataPointIndex + 1];
-        return `Max: ${value}°C | Min: ${minTemp ?? 'N/A'}°C`;
-      }
+      formatter: function (value: any) {
+        return ` ${value ?? 'N/A'}°C`
+      },
     },
   },
   dataLabels: {
@@ -86,4 +89,20 @@ const chartOptions = ref({
   },
   colors: ['#B9EFFF'],
 })
+
+watch(
+  () => weatherStore.forecast,
+  (newData) => {
+    series.value = [
+      {
+        name: '',
+        data: newData?.list.map((day) => ({
+          x: day.dt_txt,
+          y: Math.round(day.main.feels_like),
+        })),
+      },
+    ]
+  },
+  { immediate: true }
+)
 </script>

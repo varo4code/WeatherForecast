@@ -1,14 +1,14 @@
 <template>
   <main>
     <div
-      class="h-screen w-screen p-8 flex justify-around bg-gradient-to-tr from-[#3a91e2] to-[#3dcbe0]"
+      class="h-[800px] p-8 flex justify-around bg-gradient-to-tr from-[#3a56e2] to-[#3d97e0]"
     >
       <div class="container grid grid-rows-3 max-w-8xl">
         <!-- Cover -->
-        <div class="absolute inset-0 bg-linear-to-t bg-[#0a5b87] opacity-50"></div>
+        <!-- <div class="absolute inset-0 bg-linear-to-t bg-[#0a5b87] opacity-50"></div>
         <div
           class="absolute inset-0 bg-linear-to-t from-[#072230] to-transparent to-70% opacity-70"
-        ></div>
+        ></div> -->
 
         <mainInfo />
         <div class="row-span-2 grid grid-cols-4 grid-rows-2 gap-4 mt-5">
