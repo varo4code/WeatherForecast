@@ -22,7 +22,7 @@ import { computed, ref, watch } from 'vue'
 const bg = ref('')
 
 interface Props {
-  item: 'o3' | 'pm10' | 'no' | 'no2' | 'pm1' | 'pm2_5'
+  item: 'o3' | 'pm10' | 'no' | 'no2' | 'so2' | 'pm2_5'
 }
 const props = defineProps<Props>()
 const weatherStore = useWeatherStore()
@@ -30,20 +30,20 @@ const { pollution } = storeToRefs(weatherStore)
 
 const limits = {
   o3: [60, 100, 140, 180],
+  so2: [20, 80, 250, 350],
   pm10: [20, 50, 100, 200],
   no: [10, 30, 60, 80],
   no2: [40, 70, 150, 200],
-  pm1: [20, 50, 100, 200],
   pm2_5: [10, 25, 50, 75],
 }
 
 const title = computed(() => {
   const titles = {
     o3: 'O₃',
+    so2: 'SO₂',
     pm10: 'PM10',
     no: 'NO',
     no2: 'NO₂',
-    pm1: 'PM1',
     pm2_5: 'PM2.5',
   }
   return titles[props.item] || ''
@@ -72,7 +72,7 @@ const getColor = (val: number) => {
 
 const barHeight = computed(() => {
   const maxIndex = limits[props.item].length - 1
-  const maxVal = (limits[props.item][maxIndex] || 100) + 10
+  const maxVal = (limits[props.item][maxIndex] || 100) + 50
   const value = pollution.value?.list[0].components[props.item] || 0
   return `${Math.min(100, (100 * value) / maxVal)}%`
 })
