@@ -4,7 +4,7 @@ import type { CityInterface } from '../interfaces/city.interface'
 import { apiCity } from '../api/apiCity'
 import { apiWeather } from '../api/apiWeather'
 import type { Weather } from '../interfaces/weather.interface'
-// import type { Pollution } from '../interfaces/pollution.interface'
+import type { Pollution } from '../interfaces/pollution.interface'
 import type { Forecast } from '../interfaces/forecast.interface'
 
 export const useWeatherStore = defineStore('weather', () => {
@@ -13,7 +13,7 @@ export const useWeatherStore = defineStore('weather', () => {
   const city = ref<CityInterface | null>(null)
   const weather = ref<Weather | null>(null)
   const forecast = ref<Forecast | null>(null)
-  // const pollution = ref<Pollution | null>(null)
+  const pollution = ref<Pollution | null>(null)
 
   const showError = () => {
     isError.value = true
@@ -60,7 +60,7 @@ export const useWeatherStore = defineStore('weather', () => {
         params: {
           lat,
           lon,
-          cnt: 16
+          cnt: 16,
         },
       })
 
@@ -70,20 +70,20 @@ export const useWeatherStore = defineStore('weather', () => {
     }
   }
 
-  // const getPollution = async (lat: number, lon: number) => {
-  //   try {
-  //     const res = await apiWeather.get<Pollution>('/air_pollution/forecast', {
-  //       params: {
-  //         lat,
-  //         lon,
-  //       },
-  //     })
+  const getPollution = async (lat: number, lon: number) => {
+    try {
+      const res = await apiWeather.get<Pollution>('/air_pollution/forecast', {
+        params: {
+          lat,
+          lon,
+        },
+      })
 
-  //     return res.data
-  //   } catch (error) {
-  //     throw new Error('Error getting the weather: ' + error)
-  //   }
-  // }
+      return res.data
+    } catch (error) {
+      throw new Error('Error getting the weather: ' + error)
+    }
+  }
 
   const getCityWeather = async (search: string) => {
     if (search.trim().length == 0) {
@@ -92,16 +92,24 @@ export const useWeatherStore = defineStore('weather', () => {
       return
     }
     isLoading.value = true
+    console.log('Searching weather...')
     const resCity = await getCity(search)
     // If cant find the city
     if (resCity?.length == 0) {
       showError()
       return
     }
-
-    weather.value = await getWeather(resCity[0].lat, resCity[0].lon)
-    forecast.value = await getForecast(resCity[0].lat, resCity[0].lon)
-    // pollution.value = await getPollution(resCity[0].lat, resCity[0].lon)
+    localStorage.setItem('city', resCity[0].name)
+    const lat = resCity[0].lat
+    const lon = resCity[0].lon
+    const [weatherData, forecastData, pollutionData] = await Promise.all([
+      getWeather(lat, lon),
+      getForecast(lat, lon),
+      getPollution(lat, lon),
+    ])
+    weather.value = weatherData
+    forecast.value = forecastData
+    pollution.value = pollutionData
 
     isLoading.value = false
     return (city.value = resCity[0])
@@ -113,6 +121,7 @@ export const useWeatherStore = defineStore('weather', () => {
     city,
     weather,
     forecast,
+    pollution,
     getCityWeather,
   }
 })

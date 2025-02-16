@@ -30,7 +30,8 @@ import { storeToRefs } from 'pinia'
 import { useWeatherStore } from '@/weather/stores/useWeatherStore'
 
 onMounted(() => {
-  getCityWeather('New York')
+  const initSearch = localStorage.getItem('city') ?? 'New York'
+  getCityWeather(initSearch)
 })
 
 const weatherStore = useWeatherStore()

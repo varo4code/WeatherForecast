@@ -1,8 +1,7 @@
 <template>
-  <div class="relative col-span-3 p-4 h-full">
-    <!-- Superposition cover -->
-    <div class="absolute inset-0 bg-[#0b6392] opacity-60 rounded-4xl"></div>
-
+  <div
+    class="relative col-span-3 p-4 h-full bg-gradient-to-tr from-[#47446ed0] to-[#396EE1] rounded-4xl"
+  >
     <div class="relative">
       <infoTitle image="clock.svg" title="48-hour forecast" />
 
@@ -45,21 +44,25 @@ const chartOptions = ref({
     type: 'datetime',
     labels: {
       formatter: (value: string | number | Date) => {
-        const date = new Date(value);
-        return date.toLocaleDateString('en-US', {
-          day: '2-digit',
-          month: 'short',
-        }) + ' - ' + date.toLocaleTimeString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false, // Cambia a true si quieres AM/PM
-        });
+        const date = new Date(value)
+        return (
+          date.toLocaleDateString('en-US', {
+            day: '2-digit',
+            month: 'short',
+          }) +
+          ' - ' +
+          date.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false, // Cambia a true si quieres AM/PM
+          })
+        )
       },
       style: {
         colors: '#FFFFFF',
         fontSize: '12px',
       },
-    }
+    },
   },
   yaxis: {
     show: false,
@@ -103,6 +106,6 @@ watch(
       },
     ]
   },
-  { immediate: true }
+  { immediate: true },
 )
 </script>

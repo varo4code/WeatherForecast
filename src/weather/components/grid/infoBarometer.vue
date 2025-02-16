@@ -1,8 +1,5 @@
 <template>
-  <div class="relative p-4">
-    <!-- Superposition cover -->
-    <div class="absolute inset-0 bg-[#0b6392] opacity-60 rounded-4xl"></div>
-
+  <div class="relative p-4 bg-gradient-to-tr from-[#47446ed0] to-[#396EE1] rounded-4xl">
     <div class="relative">
       <infoTitle image="pressure.svg" title="Barometer" />
       <div class="flex items-center mt-2 ml-5">

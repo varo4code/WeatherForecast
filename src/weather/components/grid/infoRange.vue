@@ -1,8 +1,5 @@
 <template>
-  <div class="relative p-4">
-    <!-- Superposition cover -->
-    <div class="absolute inset-0 bg-[#0b6392] opacity-60 rounded-4xl"></div>
-
+  <div class="relative p-4 bg-gradient-to-tr from-[#47446ed0] to-[#396EE1] rounded-4xl">
     <div v-if="weather" class="relative">
       <infoTitle image="min-temp.svg" title="Temperatures" />
       <div class="flex gap-3">
@@ -34,7 +31,7 @@
 
 <script setup lang="ts">
 import { useWeatherStore } from '@/weather/stores/useWeatherStore'
-import infoTitle from './miniComponents/infoTitle.vue';
+import infoTitle from './miniComponents/infoTitle.vue'
 import { storeToRefs } from 'pinia'
 
 const weatherStore = useWeatherStore()
