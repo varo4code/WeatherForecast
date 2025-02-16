@@ -1,86 +1,86 @@
 export interface Forecast {
-    cod:     string;
-    message: number;
-    cnt:     number;
-    list:    List[];
-    city:    City;
+  cod: string
+  message: number
+  cnt: number
+  list: List[]
+  city: City
 }
 
 export interface City {
-    id:         number;
-    name:       string;
-    coord:      Coord;
-    country:    string;
-    population: number;
-    timezone:   number;
-    sunrise:    number;
-    sunset:     number;
+  id: number
+  name: string
+  coord: Coord
+  country: string
+  population: number
+  timezone: number
+  sunrise: number
+  sunset: number
 }
 
 export interface Coord {
-    lat: number;
-    lon: number;
+  lat: number
+  lon: number
 }
 
 export interface List {
-    dt:         number;
-    main:       MainClass;
-    weather:    Weather[];
-    clouds:     Clouds;
-    wind:       Wind;
-    visibility: number;
-    pop:        number;
-    sys:        Sys;
-    dt_txt:     Date;
+  dt: number
+  main: MainClass
+  weather: Weather[]
+  clouds: Clouds
+  wind: Wind
+  visibility: number
+  pop: number
+  sys: Sys
+  dt_txt: Date
 }
 
 export interface Clouds {
-    all: number;
+  all: number
 }
 
 export interface MainClass {
-    temp:       number;
-    feels_like: number;
-    temp_min:   number;
-    temp_max:   number;
-    pressure:   number;
-    sea_level:  number;
-    grnd_level: number;
-    humidity:   number;
-    temp_kf:    number;
+  temp: number
+  feels_like: number
+  temp_min: number
+  temp_max: number
+  pressure: number
+  sea_level: number
+  grnd_level: number
+  humidity: number
+  temp_kf: number
 }
 
 export interface Sys {
-    pod: Pod;
+  pod: Pod
 }
 
 export enum Pod {
-    D = "d",
-    N = "n",
+  D = 'd',
+  N = 'n',
 }
 
 export interface Weather {
-    id:          number;
-    main:        MainEnum;
-    description: Description;
-    icon:        string;
+  id: number
+  main: MainEnum
+  description: Description
+  icon: string
 }
 
 export enum Description {
-    BrokenClouds = "broken clouds",
-    ClearSky = "clear sky",
-    FewClouds = "few clouds",
-    OvercastClouds = "overcast clouds",
-    ScatteredClouds = "scattered clouds",
+  BrokenClouds = 'broken clouds',
+  ClearSky = 'clear sky',
+  FewClouds = 'few clouds',
+  OvercastClouds = 'overcast clouds',
+  ScatteredClouds = 'scattered clouds',
 }
 
 export enum MainEnum {
-    Clear = "Clear",
-    Clouds = "Clouds",
+  Clear = 'Clear',
+  Clouds = 'Clouds',
 }
 
 export interface Wind {
-    speed: number;
-    deg:   number;
-    gust:  number;
+  speed: number
+  deg: number
+  gust: number
 }

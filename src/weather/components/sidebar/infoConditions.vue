@@ -10,14 +10,12 @@
       </div>
 
       <div class="mt-5 grid grid-cols-2 gap-4">
-        <PollutionItem item="o3"/>
-        <PollutionItem item="pm10"/>
-        <PollutionItem item="no"/>
-        <PollutionItem item="no2"/>
-        <PollutionItem item="pm10"/>
-        <PollutionItem item="pm2_5"/>
-
-
+        <PollutionItem item="o3" />
+        <PollutionItem item="pm10" />
+        <PollutionItem item="no" />
+        <PollutionItem item="no2" />
+        <PollutionItem item="pm10" />
+        <PollutionItem item="pm2_5" />
       </div>
       <!-- <div class="mt-5">
         <InfoTitle title="Concentration" />
@@ -30,7 +28,6 @@
           <li>Coarse particulate matter: {{ pollution?.list[0].components['pm10'] }} μg/m3</li>
         </ul>
       </div> -->
-
     </div>
   </div>
 </template>

@@ -63,13 +63,14 @@ const chartOptions = computed(() => ({
           fontWeight: 'bold',
           color: '#fff',
           offsetY: -5,
-          formatter: () => `${pollution.value?.list[0].main.aqi} ${getAQIQuality(pollution.value?.list[0].main.aqi ?? 1)}`,
+          formatter: () =>
+            `${pollution.value?.list[0].main.aqi} ${getAQIQuality(pollution.value?.list[0].main.aqi ?? 1)}`,
         },
       },
       roundedCorners: true, // 🔹 Borde redondeado
     },
   },
   labels: ['AQI'],
-  colors: [getColor.value], 
+  colors: [getColor.value],
 }))
 </script>

@@ -40,21 +40,21 @@ export interface Rain {
 }
 
 export interface Sys {
-    type:    number;
-    id:      number;
-    country: string;
-    sunrise: number;
-    sunset:  number;
+  type: number
+  id: number
+  country: string
+  sunrise: number
+  sunset: number
 }
 
 export interface WeatherElement {
-    id:          number;
-    main:        string;
-    description: string;
-    icon:        string;
+  id: number
+  main: string
+  description: string
+  icon: string
 }
 
 export interface Wind {
-    speed: number;
-    deg:   number;
+  speed: number
+  deg: number
 }

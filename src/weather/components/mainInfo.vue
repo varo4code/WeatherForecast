@@ -2,7 +2,10 @@
   <div class="px-5 relative flex justify-between items-center">
     <div class="w-fit">
       <SearchInput />
-      <div v-if="weather" class="text-3xl mt-3.5">{{ weather.weather[0].main }} <span v-if="weather.rain">| {{ weather.rain['1h'] }} mm/h</span></div>
+      <div v-if="weather" class="text-3xl mt-3.5">
+        {{ weather.weather[0].main }}
+        <span v-if="weather.rain">| {{ weather.rain['1h'] }} mm/h</span>
+      </div>
       <div v-if="weather" class="text-[90px] mt-[-15px]">{{ Math.round(weather.main.temp) }}ºC</div>
       <div v-if="weather" class="text-[15px] mt-[-22px]">
         {{ formatTimestamp(weather.dt, weather.timezone) }}

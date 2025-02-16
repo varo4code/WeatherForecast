@@ -6,6 +6,6 @@ export const apiCity = axios.create({
     'Content-Type': 'application/json',
   },
   params: {
-    appid: import.meta.env.VITE_APP_ID
+    appid: import.meta.env.VITE_APP_ID,
   },
 })
